@@ -95,6 +95,9 @@
     line-height: 50px;
   }
   @media only screen and (min-width: 768px) {
+    body {
+      background-color: pink;
+    }
     .cd-dropdown h2,
     .cd-dropdown-content a,
     .cd-dropdown-content ul a {
