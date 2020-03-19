@@ -1,0 +1,419 @@
+
+
+<!doctype html>
+<html>
+<head>
+    <title>Trabaje con Nosotros</title>
+    <meta name="author" content="">
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-touch-icon-114x114.png">
+    <link rel="icon" type="image/png" href="favicon/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="favicon/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="favicon/manifest.json">
+    <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="css/grid.css">
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    
+    <!-- Jquery -->
+	<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+
+    <!-- Formulario -->
+    <script type="text/javascript" src="js/jquery.form.js"></script>
+    <script type="text/javascript" src="js/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="js/additional-methods.min.js"></script>
+    <script type="text/javascript" src="js/jquery.rut.js"></script>
+
+    <script type="text/javascript">
+
+    jQuery(document).ready(function ($) {
+        
+       
+        // VALIDACION DEL FORMULARIO
+       
+ 
+       $.validator.addMethod("rut", function(value, element) {
+        	return this.optional(element) || $.Rut.validar(value);
+        }, "Este campo debe ser un RUT v&aacute;lido.");
+        
+        
+        $('#rut').Rut({
+        		on_error: function(){ alert("RUT "+$("#rut").val()+" INCORRECTO!, Intente otra véz.");$("#rut").val(""); },
+        		on_success: function(){ 
+        			var elrut = $("#rut").val();
+        			var conteo = $.Rut.quitarFormato(elrut);
+        			var total = conteo.length;
+        			if(elrut=="00.000.000-0" || elrut=="0.000.000-0" || elrut=="11.111.111-1" || conteo.length<8){
+        				alert("RUT "+$("#rut").val()+" INCORRECTO!, Intente otra véz.");$("#rut").val("");
+        			}
+        		},
+        		format_on: 'keyup'
+        });
+
+
+        $('#form_contacto').validate({   
+            rules: {
+                    nombre: {required: true},
+                    telefono: {required: true},
+                    rut: {required: true,remote: "valida-rut-registro.php"},
+                    email: {required: true, email: true},
+                    nacionalidad: {required: true},
+                    cargo: {required: true},
+                    mensaje: {required: true},
+                    valor: {required: true},
+    				valor_again: {
+      					equalTo: "#valor",
+    				},
+                    archivo : {required:true, extension:'pdf|doc|docx' }
+                },
+            messages: {
+                    nombre: {required: "Debe ingresar su nombre"},
+                    telefono: {required: "Debe ingresar su teléfono"},
+                    nacionalidad: {required: "Debe ingresar su nacionalidad"},
+                    rut: {required: "Debe ingresar su RUT",remote:"Este Rut ya fue registrado."},
+                    email: {required: "Debe ingresar su email", email: "Debe ingresar un email válido"},
+                    cargo: {required: "Debe seleccionar el cargo"},
+                    mensaje: {required: "Debe ingresar su mensaje"},
+                    valor: {required: "Debe ingresar el resultado"},
+                    valor_again: {equalTo: "Debe ingresar el resultado correcto"},
+                    archivo:{required:'Debe adjuntar su curr&iacute;culum', extension:'Sólo archivos Word &oacute; PDF' }
+            },
+                onkeyup: false
+        });
+    });
+    </script>
+
+    <!-- responsive -->
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/modernizr.js"></script>
+    <script src="js/jquery.menu-aim.js"></script>
+    <script src="js/main.js"></script>
+    
+    <!-- Menu -->
+    <link href="css/estilo-menu.css" rel="stylesheet" type="text/css" />
+ 
+    
+    <link rel="stylesheet" href="font/css/fontello.css">
+    <link rel="stylesheet" href="font/css/animation.css"><!--[if IE 7]><link rel="stylesheet" href="css/fontello-ie7.css"><![endif]-->
+    <script>
+      function toggleCodes(on) {
+        var obj = document.getElementById('icons');
+        
+        if (on) {
+          obj.className += ' codesOn';
+        } else {
+          obj.className = obj.className.replace(' codesOn', '');
+        }
+      }
+      
+    </script>
+
+
+
+
+<style>
+.descripcion-msg p {
+    font-size: 13px;
+    color:#5c251f;
+    }
+
+</style>
+
+</head>
+
+<body>
+
+	<header>   
+
+    <div class="cont-1200 f-c">
+        <figure id="logo"><a href="index.php"><img src="imagenes/logo-cafe-haiti.png"/></a></figure><!-- Fin #logo -->
+
+        <nav id="menu-principal" class="desaparecer">
+            <ul id="menu">
+            	<li><a href="index.php" >Home</a>
+                <li><a href="#" >Otra Cosa</a>
+                	<div id="sm-normal">
+                        <ul>
+                            <li><a href="historia-del-cafe-haiti.php">Historia</a></li>
+                            <li><a href="proceso-productivo.php">Proceso productivo</a></li>
+                            <!--<li><a href="proceso-productivo.php">Proceso Productivo</a></li>-->
+                            <li><a href="nuestra-planta.php">Nuestra Planta</a></li>
+                            <li><a href="servicios.php">Servicios</a></li>
+                            <li><a href="reconocimientos.php">Reconocimientos</a></li>
+                        </ul>
+                    </div>
+                </li>
+            	<li><a href="productos" >Productos</a>
+                <li><a href="#" >Máquinas</a>
+                	<div id="sm-normal">
+                        <ul>
+                            <!--<li><a href="maquinas-de-cafe.php">Spidem</a></li>-->
+                            <li><a href="maquinas/la-cimbali">La Cimbali</a></li>
+                            <li><a href="maquinas/perfection by-haiti">Perfection by Haiti</a></li>
+                            <li><a href="maquinas/west-bend">West Bend</a></li>
+                            <!--<li><a href="#">Otros Productos</a></li>-->
+                            <!--<li><a href="servicio-tecnico.php">Servicio técnico</a></li>-->
+                        </ul>
+                    </div>                
+                </li>
+            	<li><a href="#" >Cápsulas</a>
+                	<div id="sm-normal">
+                        <ul>
+                            <li><a href="capsulas">Sabores</a></li>
+                            <li><a href="maquinas/perfection%20by-haiti/cafetera-perfection-by-haiti">Máquina</a></li>
+                        </ul>
+                    </div>                
+                </li>
+                <li><a href="locales.php" >Locales</a></li>
+                <li><a href="#" class="menu_active">Contacto</a>
+                	<div id="sm-normal">
+                        <ul>
+                            <li><a href="escribanos">Escríbanos</a></li>
+                            <li><a href="trabaje-con-nosotros.php">Trabaje con Nosotros</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="#" >Despacho</a>
+                	<div id="sm-normal">
+                        <ul>
+                            <!--<li><a href="coffee-break.php">Coffee Break</a></li>-->
+                            <li><a href="delivery-locales.php">Delivery locales</a></li>
+                            <li><a href="reparto-a-todo-chile.php">Reparto a todo Chile</a></li>
+                            <!--<li><a href="zona-de-reparto.php">Zona de Reparto</a></li>-->
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="carro" >Carro de Compra</a></li>
+                <li><a href="https://www.facebook.com/Caf%C3%A9-Hait%C3%AD-Chile-943127875725235/" class="p-10-0 color-cafe" target="_blank"><i class="icon-facebook"></i></a></li>
+                <li><a href="https://twitter.com/cafehaitichile" class="p-10-0 color-cafe" target="_blank"><i class="icon-twitter"></i></a></li>
+                <li><a href="https://www.instagram.com/cafehaitichile/" class="p-10-0 color-cafe" target="_blank"><i class="icon-instagram"></i></a></li>
+
+            </ul>
+        </nav>
+        <!-- Fin #menu-principal-->
+ 
+ 
+        <!-- Menu Responsive -->                            
+      <div class="cd-dropdown-wrapper">
+            <a class="cd-dropdown-trigger" href="#0">Menú</a>
+            <nav class="cd-dropdown">
+                <h2></h2>
+                <a href="#0" class="cd-close">Cerrar</a>
+                <ul class="cd-dropdown-content">
+                    <li><a href="index.php">Home</a></li>
+                    <li class="has-children">
+                        <a href="#">Vive La Experiencia</a>
+                        <ul class="cd-secondary-dropdown is-hidden">
+                            <li class="go-back"><a href="#0">Menu</a></li>
+                            <li class="see-all"><a href="historia-del-cafe-haiti.php">Mi Historia</a></li>
+                            <li class="see-all"><a href="proceso-productivo.php">Proceso productivo</a></li>
+                            <!--<li class="see-all"><a href="#">Proceso Productivo</a></li>-->
+                            <li class="see-all"><a href="nuestra-planta.php">Nuestra Planta</a></li>
+                            <li class="see-all"><a href="servicios.php">Servicios</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="productos">Productos</a>
+                    <li class="has-children">
+                        <a href="#">Máquinas</a>
+                        <ul class="cd-secondary-dropdown is-hidden">
+                            <li class="go-back"><a href="#0">Menu</a></li>
+                            <li class="see-all"><a href="maquinas/la-cimbali">La Cimbali</a></li>
+                            <li class="see-all"><a href="maquinas/perfection by-haiti">Perfection by Cari</a></li>
+                            <li class="see-all"><a href="maquinas/west-bend">West Bend</a></li>
+                        </ul>
+                    </li>                    
+                    <li class="has-children">
+                        <a href="#">Cápsulas</a>
+                        <ul class="cd-secondary-dropdown is-hidden">
+                            <li class="go-back"><a href="#0">Menu</a></li>
+                            <li class="see-all"><a href="capsulas">Sabores</a></li>
+                            <li class="see-all"><a href="maquina-capsula.php">Máquina</a></li>
+                        </ul>
+                    <li><a href="locales.php">Locales</a></li>
+                    <li><a href="reconocimientos.php">Reconocimientos</a></li>
+                    <li class="has-children">
+                        <a href="#">Contacto</a>
+                        <ul class="cd-secondary-dropdown is-hidden">
+                            <li class="go-back"><a href="#0">Menu</a></li>
+                            <li class="see-all"><a href="escribanos">Escríbanos</a></li>
+                            <li class="see-all"><a href="trabaje-con-nosotros.php">Trabaja con Nosotr@s</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-children">
+                        <a href="#">Despacho</a>
+                        <ul class="cd-secondary-dropdown is-hidden">
+                            <li class="go-back"><a href="#0">Menu</a></li>
+                            <!--<li class="see-all"><a href="#">Coffee Break</a></li>-->
+                            <!--<li class="see-all"><a href="#">Zona de Reparto</a></li>-->
+                            <li class="see-all"><a href="delivery-locales.php">Delivery locales</a></li>
+                            <li class="see-all"><a href="reparto-a-todo-chile.php">Reparto a todo Chile</a></li>
+
+                        </ul>
+                    </li>                        
+                </ul>
+            </nav>
+        </div><!-- fin menu responsive -->
+        
+    </div>
+   
+    
+    
+</header>
+    <!-- fin header -->
+
+    <section class="container cenefa-titulo">
+    	<div class="cont-1200 f-c">
+			<h2>Trabaje con Nosotros</h2>
+    	</div><!-- fin cont-1200 -->
+    </section><!-- fin container -->
+
+    <section class="container">
+    	<div class="cont-1200 f-c">
+			<div class="alt-30 f-l"></div>
+
+		<div class="w-48 f-l img-resp">
+          <img src="https://images.unsplash.com/photo-1528719001649-9f44634e34b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=749&q=80">
+        </div>
+
+    	<!-- der -->
+  		<div class="w-48 f-r bg-01">
+        <form novalidate="novalidate" class="contacto" method="post" id="form_contacto" action="trabaje-con-nosotros-envio.php" enctype="multipart/form-data">
+			<div>
+        	<label>Nombre:</label>
+			<input type="text" placeholder="Nombre" value="" id="nombre" name="nombre" size="50">
+        	</div>
+            <div>
+            <label>RUT:</label>
+			<input type="text" placeholder="RUT" value="" id="rut" name="rut" size="50" data-rule-remote="valida-rut-registro.php" data-msg-remote="Este Rut Pasaporte ya fue registrado.">
+			</div>
+			<div>
+            <label>Nacionalidad:</label>
+            
+            <select name="nacionalidad" size="1" id="nacionalidad">
+                <option value="">Seleccione nacionalidad</option>
+                <option value="chilena" >Chilena</option>
+                <option value="extranjera" >Extranjera</option>
+            </select>
+            </div>
+            <div>
+            <label>Email:</label>
+			<input type="text" placeholder="Email" value="" id="email" name="email" size="50">
+			</div>
+            <div>
+           	<label>Teléfono:</label>
+            <input type="text" placeholder="Teléfono" value="" id="telefono" name="telefono" size="50">
+			</div>
+            <div>
+            <label>Cargo al que postula:</label>
+            
+            <select name="cargo" size="1" id="cargo">
+                <option value="">Seleccione cargo</option>
+                                                <option value="36" data-msg="Lenguaje JavaScript, NodeJS, CSS, HTML">Desarrollador@s Junior</option>
+                                <option value="35" data-msg="">Desarrollador@s Java</option>
+                                
+                                <option value="32" data-msg="Experiencia en Desarrollo de Aplicaciones wed / base de datos MongoDB">Front-End Developer / UI</option>
+                                
+                                <option value="30" data-msg="">Practicante</option>
+                        
+                                <option value="33" data-msg="">UX</option>
+                            </select>
+            <div class="descripcion-msg" style="font-size: 12px;display:none;
+border-radius: 6px;
+background: #fffaea;
+position: unset;
+color: #fff;
+padding: 16px;
+margin-bottom: 20px;
+width: 529px;
+border: 1px solid #fcc6c0;
+color: #5b2620;"></div>
+            </div>
+            <div>
+            <label>Mensaje:</label>
+			<textarea placeholder="Mensaje" id="mensaje" name="mensaje"></textarea>
+            </div>
+            <div>
+            <label>Adjuntar currículum:</label>
+            <input type="file" name="archivo" id="archivo" size="13" />
+            </div>
+            <br class="alt-20 f-l" style="clear: both;">
+            <br>
+ 			<input type="text" value="21" id="valor_again" name="valor_again" style="width: 0px;
+height: 0px;">
+ 				<label>Resultado: 12 + 9</label>
+ 			<input type="text" placeholder="resultado" value="" id="valor" name="valor" size="20" style="width: 110px;">
+
+            <br class="alt-20 f-l" style="clear: both;">			<input type="submit" value="Postular" class="btn-slide" id="button2" name="button2">	
+		</form>
+
+        </div>                
+                
+			<div class="alt-30 f-l"></div>
+    	</div><!-- fin cont-1200 -->
+    </section><!-- fin container -->
+    
+
+
+
+
+
+
+    <footer class="f-l">
+    
+        <div class="last-foot">
+        	<div class="cont-1200 f-c">
+                
+				<div class="foot-izq">
+                	<figure><img src="imagenes/logo-cafe-haiti-foot.png" /></figure>
+                    <h2>Llame a:</h2>
+					<p><i class="icon-phone"></i>+569 33830430
+</p>
+                </div><!-- fin foot-izq -->
+
+
+				<div class="foot-der">
+                    <div class="alt-20 f-l"></div>
+
+					<a href="" class="ico-redes" target="_blank"><i class="icon-facebook"></i></a>
+					<a href="" class="ico-redes" target="_blank"><i class="icon-twitter"></i></a>
+					<a href= class="ico-redes" target="_blank"><i class="icon-instagram"></i></a>
+                    
+                    <div class="alt-30 f-l"></div>
+                    
+                    <p>Copyright © 2020 Carolina Medina / Todos los derechos reservados.</p>
+                    <a class="firma agencia" href="https://github.com/CarolinaMedin" target="_blank">
+                        <img src="imagenes/link-firma.png" alt="Desarrollo web https://github.com/CarolinaMedin" border="0">
+                    </a>
+                
+                </div><!-- fin foot-der -->
+                
+            </div>
+        </div>
+    
+</footer>    <!-- fin header -->
+   
+   <script>
+   
+   		$("#cargo").change(function(){
+   		$(".descripcion-msg").css("display","none");
+   			if($('#cargo option:selected').data('msg')!=""){
+   			$(".descripcion-msg").css("display","inline-table");
+   			$(".descripcion-msg").html($('#cargo option:selected').data('msg'));
+   			}
+   		})
+   </script>
+</body>
+</html>

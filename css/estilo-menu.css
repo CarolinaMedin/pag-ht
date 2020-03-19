@@ -1,0 +1,147 @@
+/* Estilo menu */
+nav#menu-principal {
+}
+
+header, nav#menu-principal { 
+  display: block;
+}
+
+nav#menu-principal ul#menu {
+  display: block;
+  margin: 0;
+  padding: 0;
+  list-style: 0;
+} 
+
+nav#menu-principal ul#menu li {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 0px;
+}
+
+.idioma{
+	text-transform:none !important;
+	font-weight:normal !important;
+}
+
+nav#menu-principal ul#menu li a {
+  font-size: 14px;
+  color: #3c3c3c;
+  font-weight: bold;
+  font-family: 'Open Sans', sans-serif;
+  text-transform:uppercase;
+
+  display: block;
+  padding: 10px 8px;
+  text-decoration: none;
+  width: auto;
+  white-space: nowrap;
+  text-align: left;
+}
+ul#menu li a img{
+	margin-bottom: 2px;
+	margin-left: 5px;
+}
+nav#menu-principal ul#menu li a:hover, nav#menu-principal ul#menu li:hover > a {
+/*	background:#333333;*/
+	color:#903025 !important;
+}
+.menu_active{
+	color:#903025 !important;
+}
+
+nav#menu-principal ul#menu li:hover > #mega {
+  display: block;
+}
+
+#mega {
+	position: absolute;
+	top: 77px;
+	left: 0;
+	min-width: 390px;
+	height: auto;
+	padding: 0px 0px 20px 0px !important;
+	display: none;
+	z-index: 99;
+	background: #242c54;
+	border-radius: 0px 0px 10px 10px;
+	border-bottom: 3px solid #ffc807;
+}
+
+ul#menu ul {
+	float: left;
+	width: 30%;
+	margin: 0 ;
+	list-style: none;
+}
+
+ul#menu ul li {
+	display: block !important;
+	width: 90% !important;
+	margin: 0px;
+}
+ul#menu ul li a {
+	display: block !important;
+	height: auto !important;
+	line-height: 1.3em !important;
+	color:#fff !important;
+	text-decoration: none !important;
+	font-size: 13px !important;
+	margin: 0px 10px 0 0 !important;
+	border-radius: 0px !important;
+	font-weight: normal !important;
+	border-bottom: none !important;
+}
+ul#menu ul li a:hover {
+	color: #fff !important;
+	border-bottom: none;
+	text-decoration:underline !important;
+}
+/* sm-normal */
+nav#menu-principal ul#menu li:hover > #sm-normal {
+  display: block;
+}
+#sm-normal {
+	position: absolute;
+	top: 42px;
+	height: auto;
+	display: none;
+	z-index: 99;
+	background: #fff;
+	-webkit-border-radius: 0 0 10px 10px;
+	border-radius: 0 0 15px 15px;
+}
+#sm-normal ul{
+	width: 100% !important;
+	margin: 10px !important;
+	float: left !important;
+	padding-bottom: 10px;
+	color:#3c3c3c !important;
+}
+nav#menu-principal #sm-normal ul li a{ /*Sub menu tipografia*/
+	color:#3c3c3c !important;
+	text-transform:none !important;
+}
+#sm-normal ul h4{
+	padding: 15px;
+}
+/* clearfix */
+nav#menu-principal ul:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+nav#menu-principal ul {
+  display: inline-block;
+} 
+html[xmlns] nav#menu-principal ul {
+  display: block;
+}
+* html nav#menu-principal ul {
+  height: 1%;
+}
+
+
