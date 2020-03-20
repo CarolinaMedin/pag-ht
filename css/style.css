@@ -496,7 +496,8 @@
     }
     .cd-dropdown-content .cd-secondary-dropdown > .see-all, .cd-dropdown-content .cd-dropdown-gallery > .see-all, .cd-dropdown-content .cd-dropdown-icons > .see-all {
       position: absolute;
-      bottom: 20px;
+      bottom: 100px;
+      top:10px;
       height: 45px;
       text-align: center;
     }

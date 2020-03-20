@@ -1856,7 +1856,7 @@ transition: all 0.3s ease-in-out;
 	.slide-responsive{ display:block; width:100%; margin-top:90px;}
 	.slide-responsive figure{ float:left;}
 	.slide-responsive figure img{ width:100%; height:auto;}
-	.cont-1200{ max-width:none; width:94% !important; padding:0 3%;}
+	.cont-1200{ max-width:none; width:97% !important; padding:0 3%;}
 	.contenedor-cenefa p{ font-size:14px; text-align:center; line-height:22px;}
 	.bg-servicios{ background:url(../imagenes/bg-servicios.jpg) right fixed;}	
 	.btn-llamada{ width:96%; margin:5% 0; text-align:center; padding:5% 2%;}
